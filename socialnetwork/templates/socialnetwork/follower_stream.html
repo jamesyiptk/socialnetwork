@@ -1,0 +1,28 @@
+{% extends "socialnetwork/base.html" %}
+
+{% block title %}
+Blog Master - Follower Stream
+{% endblock %}
+
+{% block page_name %}
+Follower Stream
+{% endblock %}
+
+{% block content %}
+    <div id="my_posts_go_here">
+    <!-- Posts will be loaded here -->
+    </div>
+{% endblock %}
+
+{% block scripts %}
+{% load static %}
+<script src="{% static 'socialnetwork/follower.js' %}" type="text/javascript"></script>
+<script>
+    const addPostUrl = "{% url 'add-post' %}";
+    const addCommentUrl = "{% url 'add-comment' %}";
+    const currentUserId = {{ request.user.id }};
+
+    window.onload = loadPosts;
+    window.setInterval(loadPosts, 5000);
+</script>
+{% endblock %}

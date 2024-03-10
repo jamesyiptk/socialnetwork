@@ -1,0 +1,51 @@
+{% extends "socialnetwork/base.html" %}
+
+{% block title %}
+Blog Master - Profile Page for {{ other_profile.user.get_full_name }}
+{% endblock %}
+
+{% block page_name %}
+    Profile Page for {{ other_profile.user.get_full_name }}
+{% endblock %}
+
+{% block content %}
+<div id="id_profile_section">
+    {% load static %}
+    {% if not other_profile.picture  %}
+        <img src="{% static 'socialnetwork/default.jpg' %}" id="id_user_picture" alt="User Picture">
+    {% else %}
+        <img src="{% url 'photo' other_profile.user.id %}" id="id_user_picture" alt="User Picture">
+    {% endif %}
+    
+    <div id="id_bio">
+        <h3>Bio</h3>
+        <p id="id_user_bio">{{ other_profile.bio }}</p>
+    </div>
+
+    {% comment %} {% if other_profile and other_profile.user %}
+        {% if can_follow %}
+            <form action="{% url 'follow' other_profile.user.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" id="id_follow">Follow</button>
+            </form>
+        {% else %}
+            <form action="{% url 'unfollow' other_profile.user.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" id="id_unfollow">Unfollow</button>
+            </form>
+        {% endif %}
+    {% endif %} {% endcomment %}
+
+    {%  if other_profile.user in request.user.profile.following.all %}
+        <form action="{% url 'unfollow' other_profile.user.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" id="id_unfollow">Unfollow</button>
+        </form>
+    {% else %}
+        <form action="{% url 'follow' other_profile.user.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" id="id_follow">Follow</button>
+        </form>
+    {% endif %}
+</div>
+{% endblock %}

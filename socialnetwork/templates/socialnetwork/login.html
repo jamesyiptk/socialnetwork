@@ -1,0 +1,21 @@
+{% extends "socialnetwork/base.html" %}
+
+{% block title %}Login{% endblock %}
+{% block page_name %}Login{% endblock %}
+
+{% block header_links %}
+    <!-- Only show the Register link on the login page -->
+    <a href="{% url 'register' %}" id="id_register_link">Register</a>
+{% endblock %}
+
+{% block content %}
+<div id="id_login_form">
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <button type="submit" id="id_login_button">Submit</button>
+    </form>
+</div>
+{% endblock %}

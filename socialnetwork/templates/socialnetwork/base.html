@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        {% load static %}
+        <link href="{% static 'socialnetwork/base.css' %}" rel="stylesheet" type="text/css">
+        <title> {% block title %} Blog Master {% endblock %} </title>
+    </head>
+    <body>
+        <div id="id_header_div" class="header">
+            <span id="id_site_name">Blog Master</span>
+            <!-- Placeholder block for additional header links -->
+            {% block header_links %}
+                {% if user.is_authenticated %}
+                    <a href="{% url 'profile' %}" id="id_nav_profile">{{ user.get_full_name }}</a>
+                    <a href="{% url 'global_stream' %}" id="id_nav_global_stream">Global</a>
+                    <a href="{% url 'follower_stream' %}" id="id_nav_follower_stream">Follower</a>
+                    <a href="{% url 'logout' %}" id="id_nav_logout">Logout</a>
+                {% endif %}
+            {% endblock %}
+        </div>
+
+        <h2 id="id_page_name">{% block page_name %}{% endblock %}</h2>
+
+        <div class="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        {% block scripts %}
+        {% endblock %}
+    </body>
+</html>

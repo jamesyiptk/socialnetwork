@@ -1,0 +1,232 @@
+/* General styling */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    background-color: #4267b2;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#id_site_name {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.content {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align to start to allow for scrolling */
+    min-height: calc(100% - 40px); /* Use min-height instead of height */
+    width: 100%; /* Ensure it spans the width of the viewport */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+
+/* Styling for forms */
+form {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    width: 300px;
+}
+
+input[type="text"], 
+input[type="password"], 
+input[type="email"],
+input[type="file"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="submit"], button {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover, button:hover {
+    background-color: #45a049;
+}
+
+/* Link styling */
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Error message styling */
+.error-message {
+    color: red;
+    font-size: 0.9em;
+}
+
+/* Add styles for input fields and their labels */
+input[type='text'], input[type='password'], input[type='email'] {
+    font-size: 20px; /* Increase font size for input fields */
+}
+
+label {
+    font-size: 20px; /* Increase font size for labels */
+}
+
+#id_login_button {
+    font-size: 20px;
+}
+
+#id_register_button {
+    font-size: 20px;
+}
+
+.error {
+    color:red;
+}
+
+/* Profile page specific styling */
+#id_user_picture {
+    width: 150px;
+    height: 150px;
+}
+
+/* Post stream styling */
+#id_post_div_n {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 4px;
+    width: 80%;
+    background: #f9f9f9;
+}
+
+/* Other elements */
+#id_page_name {
+    font-size: 1.5em;
+    color: #333;
+}
+
+#id_follow, #id_unfollow {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+#id_follow {
+    background-color: #4CAF50;
+}
+
+/* This will style the div where you input a new post or comment */
+#id_post_creation, #id_comment_input_text_n {
+    width: 80%;
+    margin-top: 20px;
+}
+
+/* Adjust the login and register link positions */
+#id_register_link, #id_login_link {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: white;
+}
+
+/* Utility classes */
+.centered {
+    text-align: center;
+}
+
+/* Apply styles to profiles */
+[id^='id_post_profile_'], 
+[id^='id_comment_profile_'] {
+    font-size: 18px;
+    font-weight: bold;
+    color: #4267b2;
+}
+
+/* Apply styles to date times */
+[id^='id_post_date_time_'],
+[id^='id_comment_date_time_'] {
+    font-size: 20px;
+    font-style: italic;
+    color: #999999;
+}
+
+/* Apply styles to texts */
+[id^='id_post_text_'],
+[id^='id_comment_text_'] {
+    font-size: 20px;
+}
+
+/* Indent comments */
+[id^='id_comment_div_'] {
+    margin-left: 40px;
+}
+
+.post_div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #f9f9f9;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px; /* Adjust as needed for your layout */
+    padding-right: 20px; /* Adjust as needed for your layout */
+}
+
+/* Additional styles for responsiveness */
+@media (max-width: 768px) {
+    #my_posts_go_here {
+        width: 95%;
+    }
+}
+
+.comment {
+    margin-left: 20px; /* Indent comments for visual nesting */
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    text-align: left; /* Align text to the left */
+    word-wrap: break-word; /* Ensures words wrap to next line */
+    overflow-wrap: break-word; /* Wraps overflow text to next line */
+    max-width: 100%; /* Ensures the comment does not exceed the width of its container */
+}
+
+.comments-container {
+    width: 100%;
+    margin-top: 10px;
+}

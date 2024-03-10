@@ -1,0 +1,46 @@
+{% extends "socialnetwork/base.html" %}
+
+{% block title %}Register{% endblock %}
+{% block page_name %}Register{% endblock %}
+
+{% block header_links %}
+    <!-- Only show the Login link on the register page -->
+    <a href="{% url 'login' %}" id="id_login_link">Login</a>
+{% endblock %}
+
+{% block content %}
+<div id="id_register_form">
+    <form method="post" action="{% url 'register' %}">
+        {% csrf_token %}
+        <!-- Display non-field errors -->
+        {% if form.non_field_errors %}
+            <ul class="errorlist">
+                {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        
+        <table>
+            {% for field in form %}
+                <tr>
+                    <td>{{ field.label_tag }}</td>
+                    <td>
+                        {{ field }}
+                        {% if field.errors %}
+                            <ul class="errorlist">
+                                {% for error in field.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        <button type="submit" id="id_register_button">Submit</button>
+    </form>
+
+</div>
+{% endblock %}
